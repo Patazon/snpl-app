@@ -118,7 +118,7 @@ def STKexpress(request):
             "PartyA": 254708374149,
             "PartyB": int(os.getenv("EXPRESS_SHORT_CODE")),
             "PhoneNumber": int(formatted_msisdn),
-            "CallBackURL": f"{os.getenv("CALLBACK_URL")}",
+            "CallBackURL": f"{os.getenv('CALLBACK_URL')}",
             "AccountReference": f"PZP-000{contract}",
             "TransactionDesc": "PatazonePay",
         }
