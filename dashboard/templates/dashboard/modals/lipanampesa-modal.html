@@ -1,0 +1,36 @@
+{% load static %}
+<div class="modal-container" id="stk-modal-container">
+    <div class="modal dimensions">
+        <div class="modal-header">
+            <img src="{% static 'img/lipanampesa.jpeg' %}" alt="lipanampesa image" srcset="" width="400" height="auto">
+        </div>
+        <!-- <h4>Enter Client's Phone Number</h4> -->
+        <div class="modal-content">
+            <form class="stkpush" action="{% url 'stkpush' %}" method="GET">
+                {% csrf_token %}
+                <div class="fields">
+                    <i class="material-icons">contact_phone</i>
+                    <span class=" prefix">254</span>
+                    <input type="number" name="mobile" id="mobile" placeholder="700123456">
+                </div>
+                <div class="fields field-amt">
+                    <i class="material-icons">payments</i>
+                    <input type="number" name="amount" id="amount" placeholder="50">
+                </div>
+                <div class="fields">
+                    <i class="material-icons">edit_document</i>
+                    <select name="contract_id" id="contract_id">
+                        {% for contract in contracts %}
+                        <option value="{{ contract.id}}">PZP-000{{ contract.id}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="expressbtn">
+                    <input type="submit" value="Send STK Express">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>

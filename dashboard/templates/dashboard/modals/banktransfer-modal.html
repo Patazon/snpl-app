@@ -1,0 +1,47 @@
+{% load static %}
+
+<div class="bank-container">
+    <div class="modal sizes">
+        <div class="bank-header">
+            <img src="{% static 'img/banktransfer.png' %}" alt="bank transfer image" srcset="" width="400"
+                height="auto">
+        </div>
+        <h4>Bank Transaction Details</h4>
+        <div class="bank-content">
+            <form class="bank-form" action="{% url 'record_bank' %}" method="GET">
+                {% csrf_token %}
+                <div>
+                    <i class="material-icons">account_balance</i>
+                    <input type="number" name="ref_id" id="ref_id" placeholder="reference id">
+                </div>
+                <div>
+                    <i class="material-icons">payments</i>
+                    <input type="number" name="bank_amount" id="bank_amount" placeholder="amount">
+                </div>
+                <div>
+                    <i class="material-icons">today</i>
+                    <input type="text" name="transfer_time" id="transfer_time"
+                        placeholder="year-month-day hour:minute:seconds">
+                </div>
+                <div>
+                    <i class="material-icons">account_circle</i>
+                    <input type="text" name="account_name" id="account_name" placeholder="account name">
+                </div>
+                <div class="sel-div">
+                    <i class="material-icons">edit_document</i>
+                    <select name="contract_id" id="contract_id">
+                        {% for contract in contracts %}
+                        <option value="{{ contract.id}}">PZP-000{{ contract.id}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="transferbtn">
+                    <input type="submit" value="Record Bank Transfer">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>

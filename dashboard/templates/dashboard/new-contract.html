@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/pages.css'%}">
+{% endblock styles %}
+{% block title%}New Contract{% endblock title%}
+{% block body %}
+<div class="content-container">
+    <div class="new-form">
+        <div class="new-entries">
+            <form action="" method="POST" class="plus new-user">
+                {% csrf_token %}
+                <span>1/2</span>
+                <h2>Client Details</h2>
+                {{ clientform.as_div }}
+                <input type="submit" name="usr_process" value="Add Client" class="submit-user" id="submit-user">
+
+                <br />
+                <br />
+            </form>
+
+            <form action="" method="POST" class="plus new-data">
+                {% csrf_token %}
+                <span>2/2</span>
+                <h2>Product Details</h2>
+                {{ productform.as_div }}
+                {{ contractform.as_div }}
+
+                <br />
+                <h2>Payment Details</h2>
+                {{ paymentform.as_div }}
+
+                <br />
+                <input type="submit" name="data_process" value="Create contract" class="submit-data">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

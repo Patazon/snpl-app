@@ -1,0 +1,28 @@
+{% load static%}
+<div class="addclient-container">
+    <div class="modal client-sizes">
+        <div class="addclient-header">
+            <img src="{% static 'img/client-area.jpg' %}" alt="bank transfer image" srcset="" width="500" height="auto">
+        </div>
+        <div class="addclient-content">
+            <form action="{% url 'add_client_contract' %}" class="addclient-form" method="GET">
+                {% csrf_token %}
+                <div>
+                    <i class="material-icons">person</i>
+                    <input type="text" name="addclient_name" id="addclient_name" placeholder="name">
+                </div>
+                <div>
+                    <i class="material-icons">badge</i>
+                    <input type="number" name="addclient_id" id="addclient_id" placeholder="id number">
+                </div>
+                <div>
+                    <i class="material-icons">call</i>
+                    <input type="number" name="addclient_msisdn" id="addclient_msisdn" placeholder="phone">
+                </div>
+                <div class="regclient-btn">
+                    <input type="submit" value="Register client">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

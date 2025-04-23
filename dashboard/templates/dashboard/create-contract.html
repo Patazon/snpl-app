@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/pages.css'%}">
+<link rel="stylesheet" href="{% static 'css/forms.css'%}">
+{% endblock styles %}
+{% block title%}Create contract{% endblock title%}
+{% block body %}
+{% load humanize %}
+
+{% include 'dashboard/modals/addclient-modal.html' %}
+{% include 'dashboard/modals/addproduct-modal.html' %}
+
+<div class="content-container">
+    <div class="create-contract">
+        <h2>Create a SNPL Contract</h2>
+        <form action="{% url 'create_contract'%}" class="new-contract" method="POST">
+            {% csrf_token%}
+            <div class="init">
+                <select name="contract_client" id="contract_client">
+                    {% for client in clients %}
+                    <option value="{{client.id_number}}">{{client.name}}</option>
+                    {% endfor %}
+                </select>
+                <a class="contract_btns"><i id="plus-client" class="material-icons">add</i></a>
+            </div>
+
+            <div>
+                <select name="contract_product" id="contract_product">
+                    {% for product in products %}
+                    <option value="{{product.item}}">{{product.item}} {{product.model}}</option>
+                    {% endfor %}
+                </select>
+                <a class="contract_btns"><i id="plus-product" class="material-icons">add</i></a>
+            </div>
+            <div class="align-div">
+                <input type="number" name="contract_price" id="contract_price" placeholder="price">
+            </div>
+            <div class="align-div">
+                <select name="contract_branch" id="contract_branch">
+                    {% for location in branches %}
+                    <option value="{{location.branch}}">{{location.branch}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="align-div">
+                <select name="contract_sales" id="contract_sales">
+                    {% for sales in salesteam %}
+                    <option value="{{sales.representative}}">{{sales.representative}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="sec-btn extra">
+                <input type="submit" value="Create contract" class="lowered">
+            </div>
+        </form>
+
+    </div>
+</div>
+<script src="{% static 'js/contract.js'%}"></script>
+
+{% endblock %}

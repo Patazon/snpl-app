@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/forms.css'%}">
+{% endblock styles %}
+{% block title%}Edit Contracts{% endblock title%}
+{% block body %}
+{% load humanize %}
+<div class="content-container">
+    <div class="reg-form">
+        <h2 class="form-title">Updating {{ client.name }}'s Information</h2>
+        <form action="" class="cli-form" method="POST">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <input type="submit" value="Save" class="custom-btn register">
+        </form>
+    </div>
+    <div class="tbl-info">
+        <div class="tbl-search">
+            <table class="search-payments">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>ID Number</th>
+                        <th>Client</th>
+                        <th>Mobile</th>
+                        <th>Registered</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for client in content_list%}
+                    <tr>
+                        <td data-title="No." class="counterCell"></td>
+                        <td data-title="ID">{{ client.id_number }}</td>
+                        <td data-title="Name">{{ client.name }}</td>
+                        <td data-title="Contact">{{ client.msisdn }}</td>
+                        <td data-title="Registered">{{ client.created_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination-container">
+                {% include 'dashboard/pagination.html'%}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

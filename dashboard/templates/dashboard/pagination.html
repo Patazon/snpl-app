@@ -1,0 +1,19 @@
+<div class="pagination">
+    <ul class="pages">
+        {% if content_list.has_previous%}
+        <li class="pg-item"><a class="pg-link" href="?page=1"">&laquo;</a></li>
+        <li class=" pg-item"><a class="pg-link" href="?page={{content_list.previous_page_number}}"">{{content_list.previous_page_number}}</a></li>
+        {% endif%}
+        <!-- {% for page in content_list.paginator.page_range%}
+            <li class=" pg-item pg-range"><a class="pg-link" href="?page={{page}}">{{ page }}</a></li>
+        {% endfor%} -->
+        <div class="current">
+            <span> {{content_list.number }} of {{ content_list.paginator.num_pages}}</span>
+        </div>
+        {% if content_list.has_next %}
+        <li class="pg-item"><a class="pg-link pg-mini"
+                href="?page={{content_list.next_page_number}}">{{content_list.next_page_number}}</a></li>
+        <li class="pg-item"><a class="pg-link" href="?page={{content_list.paginator.num_pages}}">&raquo;</a></li>
+        {%endif%}
+    </ul>
+</div>

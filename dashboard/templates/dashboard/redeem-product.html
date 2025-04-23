@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/forms.css'%}">
+{% endblock styles %}
+{% block title%}Edit Contracts{% endblock title%}
+{% block body %}
+{% load humanize %}
+<div class="content-container">
+    <div class="update">
+        <form action="" class="update-form" method="POST">
+            {% csrf_token %}
+            <h2 class="form-title">Redeem {{contract.client}}'s Product</h2>
+            {{ form.as_div }}
+            <input type="submit" value="Save" class="custom-btn update">
+            <h2>{{ form.error}}</h2>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

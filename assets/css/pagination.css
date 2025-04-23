@@ -1,0 +1,45 @@
+.pagination-container{
+    width: 80vw;
+    height: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 50px; */
+}
+
+.pages {
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.pages li{
+    padding: 10px 10px;
+
+}
+.pages li a {
+    background-color: var(--white);
+    padding: 10px;
+    border-radius: 16px;
+    color: var(--dark);
+}
+
+.pages li a:hover{
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.current {
+    background-color: var(--secondary);
+    color: var(--white);
+    padding: 10px 10px;
+    border-radius: 16px;
+}
+.current span{
+    font-size: medium;
+    font-weight: 700;
+}

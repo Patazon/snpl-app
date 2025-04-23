@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/pages.css'%}">
+{% endblock styles %}
+{% block title%}Products{% endblock title%}
+{% block body %}
+<div class="content-container" id="products">
+    <div class="shortcuts">
+        <a href="#" class="custom-btn download-btn" type="button" style="display: none;">
+            <i class="material-icons">download</i>
+            Download</a>
+        <a href="{% url 'add_product' %}" class="custom-btn add-btn" type="button">
+            <i class="material-icons">shopping_cart</i>
+            Add Product</a>
+    </div>
+    <div class="tbl-contracts">
+        <table class="contracts">
+            <thead>
+                <tr>
+                    <!-- <th>No.</th> -->
+                    <th>Item</th>
+                    <th>Model</th>
+                    <th>Added on</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in content_list%}
+                <tr>
+                    <!-- <td data-title="No." class="counterCell"></td> -->
+                    <td data-title="Item">{{ product.item }}</td>
+                    <td data-title="Model">{{ product.model}}</td>
+                    <td data-title="Added">{{ product.created_at|date:'M d, Y h:i A'}}</td>
+                    <td data-title="Actions " class="tbl-icons"><a href="{% url 'update_product' product.id %}"><i
+                                class="material-icons tbl-icn">edit</i></a>
+                        {% if perms.dashboard.delete_product %}<a href="{% url 'delete_product' product.id %}"><i
+                                class="material-icons tbl-icn">delete</i></a>{% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="pagination-container">
+            {% include 'dashboard/pagination.html'%}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

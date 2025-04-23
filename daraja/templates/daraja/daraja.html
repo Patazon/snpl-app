@@ -1,0 +1,19 @@
+{% extends 'api.html'%}
+
+{% block title%}m-pesa Transactions{%endblock%}
+
+{% block body%}
+
+<div class="list">
+    {% if res %}
+    <h2>Recent Transactions</h2>
+    {% for re in res %}
+    <ul>
+        <li><span>{{ re }}</span></li>
+    </ul>
+    {% endfor %}
+    {% else %}
+    <h2>No new Transactions</h2>
+    {% endif %}
+</div>
+{% endblock%}

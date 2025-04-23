@@ -1,0 +1,33 @@
+{% extends 'login.html'%}
+{% block title%}Login{%endblock%}
+
+{% block body %}
+
+<body class="login-page">
+    <div class="login-container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert">
+            {{ message}}
+        </div>
+        {% endfor%}
+        {% endif%}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p>Sign in to Patazone<span style="color: #ff3030;">Pay</span></p>
+            <div class="input-box">
+                <i class="material-icons">alternate_email</i>
+
+                <input type="text" name="username" id="username" placeholder="Email Address">
+            </div>
+            <div class="input-box">
+                <i class="material-icons">key</i>
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn-login">SIGN IN</button>
+        </form>
+    </div>
+
+</body>
+
+{% endblock %}

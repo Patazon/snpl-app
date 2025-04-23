@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block styles %}
+{% load static %}
+<!-- <link rel="stylesheet" href="{% static 'dev/css/pages.css'%}"> -->
+<link rel="stylesheet" href="{% static 'css/forms.css'%}">
+{% endblock styles %}
+{% block title%}Edit Contracts{% endblock title%}
+{% block body %}
+{% load humanize %}
+<div class="content-container darken">
+    <div class="other-form">
+        <h2 class="form-title">Add Product</h2>
+        <form action="" class="prod-form" method="POST">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <div class="sec-btn">
+                <input type="submit" value="Add">
+            </div>
+        </form>
+    </div>
+    <div class="tbl-info opc">
+        <div class="tbl-search">
+            <table class="search-payments">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Item</th>
+                        <th>Model</th>
+                        <th>Added on</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in content_list%}
+                    <tr>
+                        <td data-title="No." class="counterCell"></td>
+                        <td data-title="Item">{{ product.item }}</td>
+                        <td data-title="Quantity">{{ product.model }}</td>
+                        <td data-title="Added">{{ product.created_at|date:'M d, Y h:i A' }}</td>
+                        <td data-title="Actions " class="tbl-icons"><a href="{% url 'update_product' product.id %}"><i
+                                    class="material-icons tbl-icn">edit</i></a><a
+                                href="{% url 'delete_product' product.id %}"><i
+                                    class="material-icons tbl-icn">delete</i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination-container">
+                {% include 'dashboard/pagination.html'%}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

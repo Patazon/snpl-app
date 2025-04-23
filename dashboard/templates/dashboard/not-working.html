@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+{% block title%}Search Not Found{% endblock title%}
+
+{% block body%}
+{% load static %}
+<div class="content-container" id="searchitems">
+    <div class="search-content">
+        <img src="{% static 'img/error.jpg' %}" alt="not-working" width="390px" height="auto">
+    </div>
+    <p>{{error}}</p>
+</div>
+{% endblock %}

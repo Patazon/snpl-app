@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% block title%}Search Results{% endblock title%}
+
+{% block body%}
+<div class="content-container" id="searchitems">
+    <div class="search-content">
+        {% for client in clients%}
+        <span hidden>{{ client.id }}</span>
+        <div class="search-res" id="searchresults"><a href="{% url 'show_search' client.id %}">{{ client.name }}
+                {{ client.msisdn}}</a></div>
+        {% endfor%}
+    </div>
+</div>
+{% endblock %}

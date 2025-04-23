@@ -1,0 +1,213 @@
+.content-container{
+    height: calc(100vh-70px);
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.darken {
+    background-color: var(--white);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.sec-btn {
+    display: flex;
+    align-items: center;
+}
+.sec-btn input[type=submit] {
+    color: var(--white);
+    background-color: var(--secondary);
+    padding: 10px 10px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    outline: none;
+    border: none;
+    width: 100px;
+}
+.sec-btn input[type=submit]:hover{
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+    background-color: var(--white);
+}
+.extra input[type=submit]{
+    width: 200px;
+}
+.sec-btn .centered{
+    margin-left: 500px;
+}
+
+.sec-btn .lowered{
+    margin-top: 40px;
+}
+
+.update-form {
+    background-color: var(--white);
+    width: 800px;
+    margin: 70px auto 0 auto;
+    padding: 20px 0 20px 0;
+    border-radius: 16px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;    
+}
+
+.tbl-info {
+    z-index: 0;
+}
+
+.opc {
+    opacity: 0.6;
+}
+
+
+.update-form div{
+    margin-top: 20px;
+    margin-left: 80px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.cli-form div {
+    margin-top: 20px;
+}
+.update-form div input[type=number], input[type=datetime-local], input[type=number], input[type=text], select {
+    /* width: 50%; */
+    height: 75%;
+    padding: 15px 40px;
+    font-size: 16px;
+    width: 500px;
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+
+}
+
+.prod-form div input[type=text], input[type=number]{
+    color: var(--primary);
+    font-size: 16px;
+    border: 1px solid var(--primary);
+}
+.cli-form div input[type=text], input[type=number]{
+    color: var(--primary);
+    font-size: 16px;
+    border: 1px solid var(--primary);
+}
+
+
+
+.update-form .form-title {
+    color: var(--primary);
+    text-align: center;
+    margin-top: 20px;
+}
+.custom-btn.update, .custom-btn.new, .custom-btn.register, .contract-new-btn{
+    height: 40px;
+    width: 300px;
+    margin-left: 190px;
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+.other-form {
+    width: 1300px;
+    background-color: var(--white);
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 16px;
+    z-index: 2;
+}
+
+.reg-form{
+    width: 1300px;
+    background-color: var(--white);
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 16px;
+    z-index: 2;
+}
+.other-form h2{
+    margin-bottom: 20px;
+    text-align: center;
+}
+.prod-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* .sec-btn.prod{
+    padding: 15px;
+    width: 100px;
+} */
+
+.cli-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    vertical-align: middle;
+}
+
+/* .sec-btn.register{
+    margin-left: 400px;
+    width: 200px;
+} */
+
+.create-contract{
+    width: 700px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 16px;
+    background-color: var(--white);
+    
+}
+.create-contract h2{
+    padding-top: 10px;
+    text-align: center;
+
+}
+
+.new-contract .init{
+    padding-top: 20px;
+    
+}
+.new-contract div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+.new-contract div input[type=number],  select{
+    height: 75%;
+    padding: 15px 40px;
+    font-size: 16px;
+    width: 500px;
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+}
+.align-div{
+    margin-right: 105px;
+}
+
+
+.contract_btns i{
+    color: var(--white);
+    background-color: var(--secondary);
+    font-size: 40px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+}
+.contract_btns i:hover{
+    color: var(--secondary);
+    background-color: var(--white);
+    border: 1px solid var(--secondary);
+}

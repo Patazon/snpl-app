@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% load humanize %}
+{% block body %}
+
+<div class="content-container" id="index">
+    <div class="starting">
+        <div class="hello">
+            <h1>Hi {{ user.first_name }}</h1>
+            <h5>Welcome to PatazonePay</h5>
+        </div>
+
+    </div>
+
+    <div class="box-container">
+        <div class="box">
+            <div class="prof">
+                <i class="material-icons box-icn">shopping_cart</i>
+            </div>
+            <div class="text">
+                <h2 class="hi-num">{{ products }}</h2>
+                <h2 class="hi-let">total products</h2>
+            </div>
+        </div>
+        <div class="box">
+            <div class="prof">
+                <i class="material-icons box-icn">attach_money</i>
+            </div>
+            <div class="text">
+                <h2 class="hi-num">KSH {{ paid|intcomma }}
+                </h2>
+                <h2 class="hi-let">total paid</h2>
+            </div>
+        </div>
+        <div class="box">
+            <div class="prof">
+                <i class="material-icons box-icn">receipt_long</i>
+            </div>
+            <div class="text">
+                <h2 class="hi-num">KSH {{ arrears|intcomma }} </h2>
+                <h2 class="hi-let">total arrears</h2>
+            </div>
+        </div>
+        <div class="box">
+            <div class="prof">
+                <i class="material-icons box-icn">pending</i>
+            </div>
+            <div class="text">
+                <h2 class="hi-num">{{ pending }}</h2>
+                <h2 class="hi-let">pending</h2>
+            </div>
+        </div>
+        <div class="box">
+            <div class="prof">
+                <i class="material-icons box-icn">check_circle</i>
+            </div>
+            <div class="text">
+                <h2 class="hi-num">{{ completed }}</h2>
+                <h2 class="hi-let">completed</h2>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="table-container">
+        <table class="snippet">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Client</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Salespeople</th>
+                    <th>Signed</th>
+                    <th>Expiry</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contract in contracts %}
+                <tr>
+                    <td data-title="No.    " class="counterCell"></td>
+                    <td data-title="Client ">{{ contract.client.name}}</td>
+                    <td data-title="Mobile ">{{ contract.product }}</td>
+                    <td data-title="Price  ">KSH {{ contract.price|intcomma }}</td>
+                    <td data-title="Total  ">{{ contract.salesrep }}</td>
+                    <td data-title="Amount ">{{ contract.created_at|date:'M d, Y h:i A' }}</td>
+                    <td data-title="Balance">{{ contract.expiry|date:'M d, Y h:i A' }}</td>
+                    <td data-title="Status ">{{contract.status}}</td>
+                    <td data-title="Actions " class=" tbl-icons"><a href="{% url 'show_search' contract.client.id %}"><i
+                                class="material-icons tbl-icn">visibility</i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+{% endblock%}

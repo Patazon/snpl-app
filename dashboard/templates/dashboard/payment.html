@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/pages.css'%}">
+{% endblock styles %}
+{% block title%}Payments{% endblock title%}
+{% block body %}
+{% load humanize %}
+
+{% include 'dashboard/modals/lipanampesa-modal.html' %}
+{% include 'dashboard/modals/banktransfer-modal.html' %}
+{% include 'dashboard/modals/cashdeposit-modal.html' %}
+
+<div class="content-container" id="payments">
+    <div class="shortcuts">
+        <a href="{% url 'payment_csv' %}" class="custom-btn download-btn" type="button">
+            <i class="material-icons">download</i>
+            Download</a>
+        <a class="alt-btn add-btn" id="stk-btn">
+            <i class="material-icons">sim_card</i>STK Push</a>
+        <a class="alt-btn add-btn" id="bank-btn">
+            <i class="material-icons">account_balance</i>Bank Transfer</a>
+        <a class="alt-btn add-btn" id="cash-btn">
+            <i class="material-icons">payments</i>Cash Deposit</a>
+    </div>
+    <div class="tbl-contracts">
+        <table class="contracts">
+            <thead>
+                <tr>
+                    <!-- <th>No.#</th> -->
+                    <th>Contract</th>
+                    <th>Client</th>
+                    <th>Payment Gateway</th>
+                    <th>Amount</th>
+                    <th>Date Paid</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for payment in content_list %}
+                <tr>
+                    <!-- <td data-title="No.#" class="counterCell"></td> -->
+                    <td data-title="Contract">PZP-000{{ payment.contract.id }}</td>
+                    <td data-title="Client">{{ payment.contract }}</td>
+                    <td data-title="Mobile">{{ payment.mode}}</td>
+                    {% if payment.till_amount %}
+                    <td data-title="Amount">KSH {{ payment.till_amount|intcomma }}</td>
+                    {% elif payment.bank_amount %}
+                    <td data-title="Amount">KSH {{ payment.bank_amount|intcomma }}</td>
+                    {% else%}
+                    <td data-title="Amount">KSH {{ payment.cash_amount|intcomma }}</td>
+                    {%endif%}
+                    {% if payment.till_trans_time %}
+                    <td data-title="Date Paid">{{ payment.till_trans_time }}</td>
+                    {% elif payment.bank_transfer_time %}
+                    <td data-title="Date Paid">{{ payment.bank_transfer_time}}</td>
+                    {% else%}
+                    <td data-title="Date Paid">{{ payment.cash_date_paid }}</td>
+                    {% endif %}
+                    {% if perms.dashboard.delete_payment %}
+                    <td data-title="Actions">
+                        <a href="{% url 'delete_payment' payment.id %}" class="updclient-btn"><i
+                                class="material-icons tbl-icn">delete</i></a>{% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="pagination-container">
+            {% include 'dashboard/pagination.html'%}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

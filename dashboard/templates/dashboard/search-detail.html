@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/search.css'%}">
+{% endblock styles %}
+{% block title%}Search Results{% endblock title%}
+{% block body %}
+<div class="content-container">
+    <div class="search-details">
+        <span class="info-caption">Personal info</span>
+        <div class="top-info">
+            <form class="personal-info">
+                <div>
+                    <label for="name">client </label>
+                    <input type="text" name="name" data-title="Client" placeholder="{{party.name}}" readonly><br />
+                </div>
+                <div>
+                    <label for="id">national ID</label>
+                    <input type="number" name="id" data-title="National ID" placeholder="{{party.id_number}}"
+                        readonly><br />
+                </div>
+                <div>
+                    <label for="mobile">mobile</label>
+                    <input type="number" name="mobile" data-title="Mobile" placeholder="{{party.msisdn}}"
+                        readonly><br />
+                </div>
+                <div>
+                    <label for="created">account opened on</label>
+                    <input type="datetime" name="created" data-title="Registered" placeholder="{{party.created_at}}"
+                        readonly><br />
+                </div>
+
+            </form>
+            <form class="product-info">
+                <div>
+                    <label for="total">Total value</label>
+                    <input type="number" name="total" placeholder="KES {{ total }}" data-title="Total" readonly><br />
+                </div>
+                <div>
+                    <label for="paid">Total paid</label>
+                    <input type="number" name="paid" placeholder="KES {{ paid }}" data-title="Paid" readonly><br />
+                </div>
+                <div>
+                    <label for="balance">Balance </label>
+                    <input type="number" name="balance" placeholder="KES {{ total |sub:paid}}" data-title="Balance"
+                        readonly><br />
+                </div>
+            </form>
+        </div>
+
+
+        <div class="tbl-info">
+            <div class="tbl-search">
+                <table class="search-contracts">
+                    <caption>Contract info</caption>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Price</th>
+                            <th>Product</th>
+                            <th>Signed</th>
+                            <th>Expiry</th>
+                            <th>Status</th>
+                            <th>Salespeople</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contract in item_list %}
+                        <tr>
+                            <td data-title="ID.       ">PZP-000{{ contract.id}}</td>
+                            <td data-title="Price     ">{{ contract.price }}</td>
+                            <td data-title="Product   ">{{ contract.product_id }}</td>
+                            <td data-title="Created at">{{ contract.created_at }}</td>
+                            <td data-title="Expiry    ">{{ contract.expiry }}</td>
+                            <td data-title="Status    ">{{ contract.status_id }}</td>
+                            <td data-title="Salesrep  ">{{ contract.salesrep_id}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+                <div class="pagination-container">
+                    {% include 'dashboard/paginate.html'%}
+                </div>
+            </div>
+        </div>
+        <div class="tbl-search">
+            <table class="search-payments">
+                <caption>Payments info</caption>
+                <thead>
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Contract Number</th>
+                        <th>Payment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for payment in content_list %}
+                    <tr>
+                        {% if payment.mode == 'cash' %}
+                        <td data-title="Transaction ID">CSH-00{{ payment.id }}</td>
+                        <td data-title="Amount">{{ payment.cash_amount }}</td>
+                        <td data-title="Date Paid">{{ payment.created_at|date:'d-m-Y H:i '}}</td>
+                        <td data-title="Contract No.">PZP-000{{ payment.contract}}</td>
+                        <td data-title="Gateway">{{ payment.mode}}</td>
+
+                        {% elif payment.mode == 'm-pesa' %}
+                        <td data-title="Transaction ID">{{ payment.till_trans_id }}</td>
+                        <td data-title="Amount">{{ payment.till_amount }}</td>
+                        <td data-title="Date Paid">{{ payment.till_trans_time}}</td>
+                        <td data-title="Contract No.">PZP-000{{ payment.contract}}</td>
+                        <td data-title="Gateway">{{ payment.mode}}</td>
+
+                        {% else %}
+                        <td data-title="Transaction ID">{{ payment.bank_ref_id }}</td>
+                        <td data-title="Amount">{{ payment.bank_amount }}</td>
+                        <td data-title="Date Paid">{{ payment.bank_transfer_time}}</td>
+                        <td data-title="Contract No.">PZP-000{{ payment.contract}}</td>
+                        <td data-title="Gateway">{{ payment.mode}}</td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination-container">
+                {% include 'dashboard/pagination.html'%}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

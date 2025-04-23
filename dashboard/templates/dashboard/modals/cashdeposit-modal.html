@@ -1,0 +1,33 @@
+{% load static %}
+
+<div class="cash-container">
+    <div class="modal cash-sizes">
+        <div class="cash-header">
+            <img src="{% static 'img/cashawards.png' %}" alt="lipanampesa image" srcset="" width="400" height="auto">
+        </div>
+        <h4>Cash Deposit</h4>
+        <div class="cash-content">
+            <form class="cash-form" action="{% url 'record_cash' %}" method="GET">
+                {% csrf_token %}
+                <div>
+                    <i class="material-icons">payments</i>
+                    <input type="number" name="cash_amount" id="cash_amount" placeholder="99">
+                </div>
+                <div class="sel-div">
+                    <i class="material-icons">edit_document</i>
+                    <select name="contract_ids" id="contract_ids">
+                        {% for contract in contracts %}
+                        <option value="{{ contract.id}}">PZP-000{{contract.id}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="depositbtn">
+                    <input type="submit" value="Record Cash Deposit">
+                </div>
+
+            </form>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>

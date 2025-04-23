@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- favicon -->
+        <link rel="icon" type="image/png" href="{% static 'favicon/favicon-96x96.png' %}" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="{% static 'favicon/favicon.svg' %}" />
+        <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}" />
+        <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}" />
+        <!-- css -->
+        <link rel="stylesheet" href="{% static 'css/apis.css'%}">
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+            rel="stylesheet">
+        <title>Patazonepay | m-pesa</title>
+    </head>
+
+
+    <body>
+        {% block body%}
+        {% endblock body%}
+        <script src="{% static 'js/ui.js'%}"></script>
+    </body>
+
+</html>

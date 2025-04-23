@@ -1,0 +1,204 @@
+@media screen and (max-width: 1450px){
+    .nav-container {
+        height: 100vh;
+    }
+
+    .search-content {
+        margin-left: 28%;
+    }
+
+    .box .hi-num {
+        font-size: 1.2em;
+    }
+    .nav-container {
+        width: 200px;
+    }
+    .box-container {
+        max-width: 1450px;
+        gap: 10px;
+    }
+    table {
+        margin-left: 45px;
+    }
+}
+
+@media screen and (max-width:1230px){
+    table {
+        margin-left: 20px;
+    }
+}
+@media screen and (max-width: 980px){
+
+    .box .hi-let{
+        font-size: 0.8em;
+    }
+    .logo-sec .menuicn {
+        display: none;
+    }
+    .nav-container{
+        width: 60px !important;
+    }
+
+    .box-container {
+        max-width: 950px;
+        gap: 10px;
+    }
+
+    table {
+        margin-left: 60px;
+    }
+
+}
+
+@media screen and (max-width: 860px){
+
+    .box-container {
+        max-width: 860px;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px 0 0 0;
+    }
+    .table-container {
+        max-width: 300px !important;
+    }
+
+    table {
+        width: 80%;
+        border: 3px solid var(--primary);
+        background-color: var(--white);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    table thead tr {
+        display: none;
+    }
+
+    table tbody tr{
+        background-color: var(--background);
+        color: var(--tertiary);
+    }
+
+    table tbody tr:nth-child(even){
+        background-color: var(--primary);
+        color: var(--white);
+    }
+
+    table tbody td, table tbody .tbl-icons{
+        padding: 15px 5px;
+        font-size: 1em;
+        display: block;
+        /* align-content: flex-end; */
+        text-align: center;
+
+    }
+
+    table td::before{
+        content: attr(data-title) ": ";
+        float: left;
+        font-weight: 700;
+
+    }
+
+}
+@media screen and (max-width: 760px){
+    .search-bar input {
+        width: 300px;
+        border-radius: 50px;
+    }
+    .searchbtn {
+        display: none;
+    }
+    .search-content {
+        width: 300px;
+    }
+
+}
+
+@media screen and (max-width: 630px){
+    .socials {
+        gap:10px;
+    }
+
+
+
+}
+
+@media screen and (max-width: 590px){
+    .login-container {
+        width: 400px;
+    }
+
+    .search-bar input{
+        width: 250px;
+    }
+
+    .pagination-container {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .pagination {
+        gap: 20px;
+    }
+
+    .pages li{
+        padding: 5px 5px;
+    }
+
+
+
+}
+
+@media screen and (max-width: 470px){
+
+    .login-container {
+        width: 350px;
+
+    }
+    .btn-login {
+        width: 98%;
+    }
+    header {
+        gap: 5px;
+    }
+
+    .search-bar input{
+        width: 150px;
+    }
+
+    .socials {
+        display: none;
+    }
+
+    .search-content{
+        width:250px;
+        margin-left: 15%;
+    }
+    .content-container {
+        padding-top: 10px;
+    }
+    .shortcuts {
+        gap: 10px;
+        flex-wrap: wrap;
+        
+    }
+
+    table {
+        min-width: 200px !important;
+    }
+
+    .pagination-container {
+        max-width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .pages .pg-range {
+        display: none;
+    }
+
+
+
+}

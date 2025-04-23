@@ -1,0 +1,26 @@
+{% load static %}
+<div class="addprod-container">
+    <div class="modal client-sizes">
+        <div class="addprod-header">
+            <img src="{% static 'img/electronics.webp' %}" alt="bank transfer image" srcset="" width="500"
+                height="auto">
+        </div>
+        <div class="addprod-content">
+            <form action="{% url 'add_product_contract' %}" class="addprod-form" method="GET">
+                {% csrf_token%}
+                <div>
+                    <i class="material-icons">trolley</i>
+                    <input type="text" name="addprod_item" id="addprod_item"
+                        placeholder="Haier 3B+1D Frestanding cooker">
+                </div>
+                <div>
+                    <i class="material-icons">tag</i>
+                    <input type="text" name="addprod_model" id="addprod_model" placeholder="HCR2031EED1">
+                </div>
+                <div class="addprod-btn">
+                    <input type="submit" value="Add product">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

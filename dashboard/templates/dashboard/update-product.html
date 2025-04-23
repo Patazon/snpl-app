@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block styles %}
+{% load static %}
+<!-- <link rel="stylesheet" href="{% static 'dev/css/pages.css'%}"> -->
+<link rel="stylesheet" href="{% static 'css/forms.css'%}">
+{% endblock styles %}
+{% block title%}Update product{% endblock title%}
+{% block body %}
+{% load humanize %}
+<div class="content-container">
+    <div class="other-form">
+        <h2 class="form-title">Update Product Information</h2>
+        <form action="" class="prod-form" method="POST">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <input type="submit" value="Update" class="custom-btn prod">
+        </form>
+    </div>
+    <div class="tbl-info">
+        <div class="tbl-search">
+            <table class="search-payments">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Added on</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in content_list%}
+                    <tr>
+                        <td data-title="No." class="counterCell"></td>
+                        <td data-title="Item">{{ product.item }}</td>
+                        <td data-title="Quantity">{{ product.quantity }}</td>
+                        <td data-title="Added">{{ product.created_at|date:'M d, Y h:i A' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination-container">
+                {% include 'dashboard/pagination.html'%}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
