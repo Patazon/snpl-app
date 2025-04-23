@@ -112,7 +112,7 @@ def STKexpress(request):
         payload = {
             "BusinessShortCode": int(os.getenv("EXPRESS_SHORT_CODE")),
             "Password": f"{basic_password()}",
-            "Timestamp": f"{strftime("%Y%m%d%H%M%S")}",
+            "Timestamp": f"{strftime('%Y%m%d%H%M%S')}",
             "TransactionType": os.getenv("TRANS_TYPE"),
             "Amount": f"{amount}",
             "PartyA": 254708374149,
