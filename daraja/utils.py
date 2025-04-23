@@ -22,7 +22,7 @@ load_dotenv(override=True)
 def basic_auth():
     """genereates the base64 encoded string for auth header"""
 
-    auth = f"{os.getenv("CONSUMER_KEY")}:{os.getenv("CONSUMER_SECRET")}"
+    auth = f"{os.getenv('CONSUMER_KEY')}:{os.getenv('CONSUMER_SECRET')}"
 
     byte_auth = auth.encode("utf-8")
 
@@ -36,7 +36,7 @@ def basic_auth():
 def basic_password():
     timestamp = strftime("%Y%m%d%H%M%S")
 
-    password = f"{os.getenv("EXPRESS_SHORT_CODE")}{os.getenv("PASSKEY")}{timestamp}"
+    password = f"{os.getenv('EXPRESS_SHORT_CODE')}{os.getenv('PASSKEY')}{timestamp}"
 
     byte_password = password.encode("utf-8")
 
