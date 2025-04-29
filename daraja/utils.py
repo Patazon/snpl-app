@@ -137,7 +137,7 @@ def set_payment(msisdn, trans_id, trans_time, amount, ref_number):
         mode_id="m-pesa",
     )
 
-    payment_sms(ref)
+    # payment_sms(ref)
 
 
 def log_callback(resp):
