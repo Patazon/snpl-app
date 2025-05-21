@@ -35,7 +35,7 @@
                     <td data-title="ID Number">{{ client.id_number }}</td>
                     <td data-title="Client"><a href="{% url 'show_search' client.id %}">{{ client.name }}</a></td>
                     <td data-title="Mobile">{{ client.msisdn }}</td>
-                    <td data-title="E-mail">{{ client.created_at|date:'M d, Y h:i A'}}</td>
+                    <td data-title="Registered">{{ client.created_at|date:'M d, Y h:i A'}}</td>
                     <td data-title="Actions " class="tbl-icons"><a href="{% url 'update_client' client.id %}"
                             class="updclient-btn"><i class="material-icons tbl-icn">edit</i></a>
                         {% if perms.auth.delete_user%}

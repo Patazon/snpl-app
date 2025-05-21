@@ -39,10 +39,10 @@
                     <td data-title="Product ">{{ contract.product }}</td>
                     <td data-title="Price  ">{{ contract.price|intcomma }}</td>
                     <td data-title="Signed ">{{ contract.created_at|date:'M d, Y h:i A' }}</td>
-                    <td data-title="Expiry">{{ contract.expiry|date:'M d, Y h:i A'}}</td>
-                    <td data-title="Status">{{ contract.status }}</td>
-                    <td data-title="Total  ">{{ contract.salesrep }}</td>
-                    <td data-title="Actions " class="tbl-icons">
+                    <td data-title="Expiry ">{{ contract.expiry|date:'M d, Y h:i A'}}</td>
+                    <td data-title="Status ">{{ contract.status }}</td>
+                    <td data-title="Sales person">{{ contract.salesrep }}</td>
+                    <td data-title="Actions" class="tbl-icons">
                         {% if perms.auth.edit_contract %}
                         <a href="{% url 'update_contract' contract.id %}"><i class="material-icons tbl-icn">edit</i></a>
                         {% endif %}

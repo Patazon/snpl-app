@@ -23,7 +23,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Item</th>
-                        <th>Quantity</th>
+                        <th>Model</th>
                         <th>Added on</th>
                     </tr>
                 </thead>
@@ -32,7 +32,7 @@
                     <tr>
                         <td data-title="No." class="counterCell"></td>
                         <td data-title="Item">{{ product.item }}</td>
-                        <td data-title="Quantity">{{ product.quantity }}</td>
+                        <td data-title="Model">{{ product.model }}</td>
                         <td data-title="Added">{{ product.created_at|date:'M d, Y h:i A' }}</td>
                     </tr>
                     {% endfor %}
