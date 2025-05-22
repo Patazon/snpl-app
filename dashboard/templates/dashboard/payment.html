@@ -35,7 +35,7 @@
                     <th>Contract</th>
                     <th>Client</th>
                     <th>Payment Gateway</th>
-                    <th>Amount</th>
+                    <th>Amount(KES)</th>
                     <th>Date Paid</th>
                     <th>Actions</th>
                 </tr>
@@ -48,11 +48,11 @@
                     <td data-title="Client">{{ payment.contract }}</td>
                     <td data-title="Paid via">{{ payment.mode}}</td>
                     {% if payment.till_amount %}
-                    <td data-title="Amount">KSH {{ payment.till_amount|intcomma }}</td>
+                    <td data-title="Amount">{{ payment.till_amount|intcomma }}</td>
                     {% elif payment.bank_amount %}
-                    <td data-title="Amount">KSH {{ payment.bank_amount|intcomma }}</td>
+                    <td data-title="Amount">{{ payment.bank_amount|intcomma }}</td>
                     {% else%}
-                    <td data-title="Amount">KSH {{ payment.cash_amount|intcomma }}</td>
+                    <td data-title="Amount">{{ payment.cash_amount|intcomma }}</td>
                     {%endif%}
                     {% if payment.till_trans_time %}
                     <td data-title="Date Paid">{{ payment.till_trans_time }}</td>

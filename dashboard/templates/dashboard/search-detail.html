@@ -56,8 +56,8 @@
                     <caption>Contract info</caption>
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Price</th>
+                            <th>Account No.</th>
+                            <th>Price(KES)</th>
                             <th>Product</th>
                             <th>Signed</th>
                             <th>Expiry</th>
@@ -68,8 +68,8 @@
                     <tbody>
                         {% for contract in item_list %}
                         <tr>
-                            <td data-title="ID.       ">PZP-000{{ contract.id}}</td>
-                            <td data-title="Price     ">{{ contract.price }}</td>
+                            <td data-title="Account No.">PZP-000{{ contract.id}}</td>
+                            <td data-title="Price(KES)">{{ contract.price }}</td>
                             <td data-title="Product   ">{{ contract.product_id }}</td>
                             <td data-title="Signed    ">{{ contract.created_at }}</td>
                             <td data-title="Expiry    ">{{ contract.expiry }}</td>
@@ -90,7 +90,7 @@
                 <thead>
                     <tr>
                         <th>Transaction ID</th>
-                        <th>Amount</th>
+                        <th>Amount(KES)</th>
                         <th>Date</th>
                         <th>Contract Number</th>
                         <th>Payment</th>
@@ -101,21 +101,21 @@
                     <tr>
                         {% if payment.mode == 'cash' %}
                         <td data-title="Transaction ID">CSH-00{{ payment.id }}</td>
-                        <td data-title="Amount">{{ payment.cash_amount }}</td>
+                        <td data-title="Amount(KES)">{{ payment.cash_amount }}</td>
                         <td data-title="Date Paid">{{ payment.created_at|date:'d-m-Y H:i '}}</td>
                         <td data-title="Contract No.">PZP-000{{ payment.contract}}</td>
                         <td data-title="Gateway">{{ payment.mode}}</td>
 
                         {% elif payment.mode == 'm-pesa' %}
                         <td data-title="Transaction ID">{{ payment.till_trans_id }}</td>
-                        <td data-title="Amount">{{ payment.till_amount }}</td>
+                        <td data-title="Amount(KES)">{{ payment.till_amount }}</td>
                         <td data-title="Date Paid">{{ payment.till_trans_time}}</td>
                         <td data-title="Contract No.">PZP-000{{ payment.contract}}</td>
                         <td data-title="Gateway">{{ payment.mode}}</td>
 
                         {% else %}
                         <td data-title="Transaction ID">{{ payment.bank_ref_id }}</td>
-                        <td data-title="Amount">{{ payment.bank_amount }}</td>
+                        <td data-title="Amount(KES)">{{ payment.bank_amount }}</td>
                         <td data-title="Date Paid">{{ payment.bank_transfer_time}}</td>
                         <td data-title="Contract No.">PZP-000{{ payment.contract}}</td>
                         <td data-title="Gateway">{{ payment.mode}}</td>

@@ -20,10 +20,10 @@
         <table class="contracts">
             <thead>
                 <tr>
-                    <th>No.</th>
+                    <th>Account No.</th>
                     <th>Client</th>
                     <th>Product</th>
-                    <th>Price(KSH)</th>
+                    <th>Price(KES)</th>
                     <th>Signed</th>
                     <th>Expiry</th>
                     <th>Status</th>
@@ -34,10 +34,10 @@
             <tbody>
                 {% for contract in content_list %}
                 <tr>
-                    <td data-title="No.    ">PZP-000{{ contract.id }}</td>
+                    <td data-title="Account No. ">PZP-000{{ contract.id }}</td>
                     <td data-title="Client ">{{ contract.client.name}}</td>
                     <td data-title="Product ">{{ contract.product }}</td>
-                    <td data-title="Price  ">{{ contract.price|intcomma }}</td>
+                    <td data-title="Price(KES) ">{{ contract.price|intcomma }}</td>
                     <td data-title="Signed ">{{ contract.created_at|date:'M d, Y h:i A' }}</td>
                     <td data-title="Expiry ">{{ contract.expiry|date:'M d, Y h:i A'}}</td>
                     <td data-title="Status ">{{ contract.status }}</td>
