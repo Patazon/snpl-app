@@ -7,6 +7,8 @@
 {% block body %}
 {% load humanize %}
 
+
+{% include 'dashboard/modals/mpesatransaction-modal.html' %}
 {% include 'dashboard/modals/lipanampesa-modal.html' %}
 {% include 'dashboard/modals/banktransfer-modal.html' %}
 {% include 'dashboard/modals/cashdeposit-modal.html' %}
@@ -16,14 +18,16 @@
         <a href="{% url 'payment_csv' %}" class="custom-btn download-btn" type="button">
             <i class="material-icons">download</i>
             Download</a>
-        <a class="alt-btn add-btn" id="stk-btn">
-            <i class="material-icons">sim_card</i>STK Push</a>
+        <!-- <a class="alt-btn add-btn" id="stk-btn">
+            <i class="material-icons">sim_card</i>STK Push</a> -->
+        <a class="alt-btn add-btn" id="mpesa-btn">
+            <i class="material-icons">sim_card</i>m-pesa</a>
         <a class="alt-btn add-btn" id="bank-btn">
             <i class="material-icons">account_balance</i>Bank Transfer</a>
         <a class="alt-btn add-btn" id="cash-btn">
             <i class="material-icons">payments</i>Cash Deposit</a>
     </div>
-    <div class="tbl-contracts">
+    <div class="tbl-contracts" id="payments_tbl">
         <table class="contracts">
             <thead>
                 <tr>

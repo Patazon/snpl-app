@@ -12,7 +12,9 @@
         <form action="" class="cli-form" method="POST">
             {% csrf_token %}
             {{ form.as_div }}
-            <input type="submit" value="Save" class="custom-btn register">
+            <div class="sec-btn extra">
+                <input type="submit" value="Save" class="custom-btn register">
+            </div>
         </form>
     </div>
     <div class="tbl-info">

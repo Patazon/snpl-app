@@ -2,9 +2,9 @@
 
 from django.urls import path
 
+from dashboard.views import add_client  # send_text,
 from dashboard.views import (
     Index,
-    add_client,  # send_text,
     add_client_contract,
     add_product,
     add_product_contract,
@@ -22,6 +22,7 @@ from dashboard.views import (
     product,
     record_bank,
     record_cash,
+    record_mpesa,
     redeem_product,
     search,
     show_search,
@@ -56,6 +57,7 @@ urlpatterns = [
     path("payments/", payment, name="payment"),
     path("record_bank_transfer/", record_bank, name="record_bank"),
     path("record_cash/", record_cash, name="record_cash"),
+    path("record_mpesa/", record_mpesa, name="record_mpesa"),
     path("payments/download", payment_csv, name="payment_csv"),
     path("payments/delete/<payment_id>", delete_payment, name="delete_payment"),
     # product

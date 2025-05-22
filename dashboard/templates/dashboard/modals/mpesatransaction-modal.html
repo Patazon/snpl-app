@@ -1,0 +1,50 @@
+{% load static %}
+<div class="mpesa-container">
+    <div class="modal sizes">
+        <div class="mpesa-header">
+            <img src="{% static 'img/lipanampesa.jpeg' %}" alt="m-pesa logo" width="500" height="auto">
+        </div>
+        <h4 class="m-h4"> m-pesa Transaction Details</h4>
+        <div class="mpesa-content">
+            <form action="{% url 'record_mpesa' %}" class="mpesa-form" method="GET">
+                {% csrf_token %}
+                <div>
+                    <i class="material-icons">account_balance</i>
+                    <input type="text" name="trans_id" id="trans_id" placeholder="N1RJSIIQNEXM">
+                </div>
+                <div>
+                    <i class="material-icons">payments</i>
+                    <input type="number" name="trans_amount" id="trans_amount" placeholder="10000">
+                </div>
+                <div>
+                    <i class="material-icons">today</i>
+                    <input type="datetime-local" name="trans_time" id="trans_time">
+                </div>
+                <div class="sel-div">
+                    <i class="material-icons">edit_document</i>
+                    <select name="trans_contract" id="trans_contract">
+                        {% for contract in contracts %}
+                        <option value="{{ contract.id }}">PZP-000{{ contract.id}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mpesatrans">
+                    <input type="submit" value="Record m-pesa Transaction">
+                </div>
+            </form>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>

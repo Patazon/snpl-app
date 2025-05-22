@@ -20,12 +20,44 @@
     table {
         margin-left: 45px;
     }
+    .create-contract {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .search-details .info-caption{
+        display: none;
+    }
+    .top-info{
+        width: 800px !important;
+        margin-top: 20px !important;
+        margin-left: 50px !important;
+    }
 }
 
+@media screen and (max-width:1400px){
+    .other-form, .reg-form{
+        width: 800px !important;
+    }
+    .prod-form{
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .cli-form div input{
+        width: 300px !important;
+    }
+    .cli-form .sec-btn input{
+        margin-left: 10px !important;
+    }
+}
 @media screen and (max-width:1230px){
     table {
         margin-left: 20px;
     }
+    .top-info{
+        width: 600px !important;
+    }
+
+
 }
 @media screen and (max-width: 980px){
 
@@ -47,6 +79,7 @@
     table {
         margin-left: 60px;
     }
+
 
 }
 
@@ -99,8 +132,47 @@
         font-weight: 700;
 
     }
+    .shortcuts {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .update-form{
+        width: 500px !important;
+    }
+    .update-form div input, select{
+        width: 400px !important;
+    }
+    .update-form .sec-btn .custom-btn{
+        margin-left: auto;
+        margin-right: auto;  
+    }
+
+    .update-form div{
+        margin-left: 50px !important;
+    }
 
 }
+@media screen and (max-width: 806px){
+    #payments_tbl{
+        margin-top: 50px;
+    }
+
+    .other-form, .reg-form{
+        width: 400px !important;
+    }
+    .prod-form {
+        flex-wrap: wrap;
+    }
+
+    .prod-form div input{
+        width: 300px !important;
+    }
+    .cli-form{
+        grid-template-columns: none !important;
+    }
+
+}
+
 @media screen and (max-width: 760px){
     .search-bar input {
         width: 300px;
@@ -112,6 +184,29 @@
     .search-content {
         width: 300px;
     }
+    .top-info{
+        flex-wrap: wrap;
+    }
+    .create-contract{
+        width: 500px !important;
+    }
+    .new-contract div input, select{
+        width: 400px !important;
+    }
+    .new-contract .align-div{
+        margin-left: 15px !important
+    }
+
+
+
+
+
+}
+
+@media screen and (max-width: 690px){
+    .top-info{
+        width: 500px !important;
+    }
 
 }
 
@@ -119,7 +214,9 @@
     .socials {
         gap:10px;
     }
+    
 
+    
 
 
 }
@@ -147,7 +244,36 @@
         padding: 5px 5px;
     }
 
+    .top-info{
+        width: 400px !important;
+    }
+    .update-form{
+        width: 400px !important;
+    }
+    .update-form div input, select{
+        width: 300px !important;
+    }
+    .cash-header, .bank-header, .mpesa-header{
+        width: 300px;
+    }
+    .cash-header img, .bank-header img, .mpesa-header img{
+        width: 300px !important;
+        margin-left: 0 !important;
+        border-radius: 16px 16px 0 0 ;
 
+    }
+    .cash-sizes, .sizes{
+        width: 300px !important;
+    }
+    .cash-form div input[type=number]{
+        width: 200px !important;
+    }
+    .bank-form div input[type=number], input[type=text], select{
+        width: 200px !important;
+    }
+    .mpesa-form div input[type=number], input[type=text], input[type=datetime-local], select{
+        width: 200px !important;
+    }
 
 }
 
@@ -179,11 +305,11 @@
     .content-container {
         padding-top: 10px;
     }
-    .shortcuts {
-        gap: 10px;
-        flex-wrap: wrap;
-        
+    
+    #contracts_tbl{
+        padding-top: 30px;
     }
+
 
     table {
         min-width: 200px !important;
@@ -199,6 +325,41 @@
         display: none;
     }
 
+    .top-info{
+        width: 265px !important;
+        margin-left: 20px !important;
+    }
+    .create-contract{
+        width: 300px !important;
+    }
+    .new-contract div input, select{
+        width: 200px !important;
+    }
 
+
+}
+@media screen and (max-width: 440px){
+    #payments_tbl{
+        padding-top: 150px;
+    }
+    .reg-form, .other-form{
+        width: 290px !important;
+    }
+    .cli-form div input, .prod-form div input{
+        width: 230px !important;
+    }
+
+    .update-form div input, select{
+        width: 230px !important;
+    }
+    .update-form .sec-btn .custom-btn{
+        width: 200px !important;
+        margin-left: 10px !important;
+    }
+    .update-form h2{
+        font-size: 24px;
+        text-align: left !important;
+        margin-left: 20px !important;
+    }
 
 }

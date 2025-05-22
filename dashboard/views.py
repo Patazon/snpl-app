@@ -594,6 +594,26 @@ def record_cash(request):
         return redirect("payment")
 
 
+def record_mpesa(request):
+    if request.method == "GET":
+        till_trans_id = request.GET["trans_id"]
+        till_amount = request.GET["trans_amount"]
+        till_date = request.GET["trans_time"]
+        contract = request.GET["trans_contract"]
+
+        Payment.objects.create(
+            till_trans_id=till_trans_id,
+            till_amount=till_amount,
+            till_trans_time=till_date,
+            mode_id="m-pesa",
+            contract_id=contract,
+        )
+
+        # payment_sms(contract)
+
+        return redirect("payment")
+
+
 def contract_csv(request):
     """exporting csv file showing all contracts"""
 
