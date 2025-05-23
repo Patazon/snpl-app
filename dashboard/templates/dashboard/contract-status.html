@@ -1,22 +1,9 @@
 {% extends 'base.html' %}
-{% block styles %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/pages.css'%}">
-{% endblock styles %}
-{% block title%}Contracts{% endblock title%}
+{% block title%}Completed Contracts{% endblock title%}
 {% block body %}
 {% load humanize %}
-
-<div class="content-container" id="contracts">
-    <div class="shortcuts">
-        <a href="{% url 'contract_csv' %}" class="custom-btn download-btn" type="button">
-            <i class="material-icons">download</i>
-            Download</a>
-        <a href="{% url 'create_contract' %}" class="alt-btn add-btn" type="button">
-            <i class="material-icons">receipt</i>
-            Add Contract</a>
-    </div>
-    <div class="tbl-contracts" id="contracts_tbl">
+<div class="content-container">
+    <div class="tbl-contracts">
         <table class="contracts">
             <thead>
                 <tr>
@@ -36,28 +23,15 @@
                 <tr>
                     <td data-title="Account No. ">PZP-000{{ contract.id }}</td>
                     <td data-title="Client ">{{ contract.client.name}}</td>
-                    <td data-title="Product ">{{ contract.product }}</td>
+                    <td data-title="Product">{{ contract.product }}</td>
                     <td data-title="Price(KES) ">{{ contract.price|intcomma }}</td>
                     <td data-title="Signed ">{{ contract.created_at|date:'M d, Y h:i A' }}</td>
                     <td data-title="Expiry ">{{ contract.expiry|date:'M d, Y h:i A'}}</td>
                     <td data-title="Status ">{{ contract.status }}</td>
                     <td data-title="Sales person">{{ contract.salesrep }}</td>
-                    <td data-title="Actions" class="tbl-icons">
-                        {% if perms.auth.edit_contract %}
-                        <a href="{% url 'update_contract' contract.id %}"><i class="material-icons tbl-icn">edit</i></a>
-                        {% endif %}
+                    <td data-title="Actions " class="tbl-icons">
                         <a href="{% url 'show_search' contract.client.id %}"><i
                                 class="material-icons tbl-icn">visibility</i></a>
-                        <div class="dropdown">
-                            <i class="material-icons tbl-icn">more_vert</i>
-                            <div class="dropdown-content">
-                                <a href="{% url 'redeem_product' contract.id%}"><i
-                                        class="material-icons tbl-icn">redeem</i>Redeem Product</a>
-                                <a href="{% url 'mark_complete' contract.id %}"><i
-                                        class="material-icons tbl-icn">task_alt</i>Mark As Completed</a>
-                            </div>
-
-                        </div>
                     </td>
                 </tr>
                 {% endfor %}
@@ -68,5 +42,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

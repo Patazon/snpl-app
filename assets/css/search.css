@@ -46,7 +46,7 @@
     padding: 10px;
 }
 .top-info form div input::placeholder{
-    color: var(--info);
+    color: var(--primary);
     font-size: medium;
     margin-left: 30px;
 }

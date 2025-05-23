@@ -247,6 +247,9 @@
     .top-info{
         width: 400px !important;
     }
+    .personal-info div input[type=text]{
+        margin-right: 100px !important;
+    }
     .update-form{
         width: 400px !important;
     }
@@ -326,7 +329,7 @@
     }
 
     .top-info{
-        width: 265px !important;
+        width: 290px !important;
         margin-left: 20px !important;
     }
     .create-contract{

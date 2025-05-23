@@ -56,13 +56,13 @@ def Index(request):
         .get("status__count")
     )
 
-    redeemed = (
-        Contract.objects.filter(status__standing__contains="redeemed")
-        .aggregate(Count("status"))
-        .get("status__count")
-    )
+    # redeemed = (
+    #     Contract.objects.filter(status__standing__contains="redeemed")
+    #     .aggregate(Count("status"))
+    #     .get("status__count")
+    # )
 
-    closed = completed + redeemed
+    closed = completed
 
     return render(
         request,
@@ -281,6 +281,34 @@ def show_search(request, searched_id):
     return render(request, "dashboard/not-found.html")
 
 
+def completed_contracts(request):
+    closed = Contract.objects.filter(status_id="completed").order_by("-id")
+
+    pgs = Paginator(closed, 9)
+
+    page_number = request.GET.get("page")
+
+    content_list = pgs.get_page(page_number)
+
+    return render(
+        request, "dashboard/contract-status.html", {"content_list": content_list}
+    )
+
+
+def pending_contracts(request):
+    ongoing = Contract.objects.filter(status_id="pending").order_by("-id")
+
+    pgs = Paginator(ongoing, 9)
+
+    page_number = request.GET.get("page")
+
+    content_list = pgs.get_page(page_number)
+
+    return render(
+        request, "dashboard/contract-status.html", {"content_list": content_list}
+    )
+
+
 def add_client(request):
     """view for creating a client"""
     clients = Client.objects.all().order_by("-id")
@@ -300,19 +328,6 @@ def add_client(request):
         "dashboard/add-client.html",
         {"form": ClientForm, "content_list": client_list},
     )
-    # if request.method == "GET":
-    #     id = request.GET["id_number"]
-    #     name = request.GET["name"]
-    #     msisdn = request.GET["msisdn"]
-    #     alt_msisdn = request.GET["alt-msisdn"]
-
-    #     # print(id, name, msisdn, alt_msisdn)
-
-    #     Client.objects.create(
-    #         id_number=id, name=name, msisdn=msisdn, alt_msisdn=alt_msisdn
-    #     )
-
-    #     return redirect("client")
 
 
 def update_client(request, client_id):

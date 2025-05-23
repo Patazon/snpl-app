@@ -15,7 +15,7 @@
     <div class="box-container">
         <div class="box">
             <div class="prof">
-                <i class="material-icons box-icn">shopping_cart</i>
+                <a href="{% url 'product' %}"><i class="material-icons box-icn">shopping_cart</i></a>
             </div>
             <div class="text">
                 <h2 class="hi-num">{{ products }}</h2>
@@ -24,7 +24,7 @@
         </div>
         <div class="box">
             <div class="prof">
-                <i class="material-icons box-icn">attach_money</i>
+                <a href="{% url 'payment' %}"><i class="material-icons box-icn">attach_money</i></a>
             </div>
             <div class="text">
                 <h2 class="hi-num">KSH {{ paid|intcomma }}
@@ -43,7 +43,7 @@
         </div>
         <div class="box">
             <div class="prof">
-                <i class="material-icons box-icn">pending</i>
+                <a href="{% url 'pending_contracts' %}"><i class="material-icons box-icn">pending</i></a>
             </div>
             <div class="text">
                 <h2 class="hi-num">{{ pending }}</h2>
@@ -52,7 +52,7 @@
         </div>
         <div class="box">
             <div class="prof">
-                <i class="material-icons box-icn">check_circle</i>
+                <a href="{% url 'completed_contracts' %}"><i class="material-icons box-icn">check_circle</i></a>
             </div>
             <div class="text">
                 <h2 class="hi-num">{{ completed }}</h2>

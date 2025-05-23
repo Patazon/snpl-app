@@ -10,6 +10,7 @@ from dashboard.views import (
     add_product_contract,
     client,
     client_csv,
+    completed_contracts,
     contract,
     contract_csv,
     create_contract,
@@ -19,6 +20,7 @@ from dashboard.views import (
     mark_complete,
     payment,
     payment_csv,
+    pending_contracts,
     product,
     record_bank,
     record_cash,
@@ -47,6 +49,8 @@ urlpatterns = [
     path(
         "contract/redeem_product/<contract_id>", redeem_product, name="redeem_product"
     ),
+    path("contracts/completed", completed_contracts, name="completed_contracts"),
+    path("contracts/pending", pending_contracts, name="pending_contracts"),
     # client
     path("clients/", client, name="client"),
     path("client/add", add_client, name="add_client"),
