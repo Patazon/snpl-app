@@ -113,7 +113,7 @@ def set_payment(msisdn, trans_id, trans_time, amount, ref_number):
 
     q = Payment.objects.filter(contract_id=ref)
 
-    print(q)
+    # print(q)
 
     Payment.objects.create(
         till_amount=int(float(amount)),
