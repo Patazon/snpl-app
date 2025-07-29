@@ -102,7 +102,7 @@ def payment_sms(contract):
         "mobile": f"254{client_details.msisdn}",
         "response_type": "json",
         "shortcode": "Patazone",
-        "message": f"Dear {client_details.name}, you have paid a total of KES {sum}. Your balance is KES {balance}. For more inquiries call 0111051120",
+        "message": f"Dear Customer, you have paid a total of KES {sum}. Your balance is KES {balance}. For more inquiries call 0111051120",
     }
     feedback = requests.post(url, headers=headers, json=payload, timeout=20).json()
 
