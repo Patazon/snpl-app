@@ -11,15 +11,7 @@ from dotenv import load_dotenv
 from rest_framework import response, status
 from rest_framework.views import APIView, View
 
-from daraja.utils import (
-    basic_password,
-    create_transdetails,
-    get_callback,
-    get_dbtoken,
-    get_transdetails,
-    log_callback,
-    set_payment,
-)
+from daraja.utils import create_transdetails, get_dbtoken, get_transdetails, set_payment
 
 load_dotenv(override=True)
 

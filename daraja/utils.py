@@ -8,11 +8,9 @@ import requests
 from django.http import JsonResponse
 from django.utils import timezone
 from dotenv import load_dotenv
-from requests.auth import HTTPBasicAuth
-from rest_framework import response, status
 
-from daraja.models import CallbackResults, OAuthToken, TillTransaction, Transaction
-from daraja.serializers import CallbackResultsSerializer, TillTransactionSerializer
+from daraja.models import OAuthToken, TillTransaction
+from daraja.serializers import TillTransactionSerializer
 from dashboard.models import Payment
 from dashboard.tasks import payment_sms
 
@@ -123,4 +121,4 @@ def set_payment(msisdn, trans_id, trans_time, amount, ref_number):
         mode_id="m-pesa",
     )
 
-    # payment_sms(ref)
+    payment_sms(ref)
