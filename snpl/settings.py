@@ -148,5 +148,5 @@ SESSION_TIMEOUT_REDIRECT = "index"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 CRONJOBS = [
-    ("0 11 /14 * *", "dashboard.tasks.send_text"),
+    ("0 11 */14 * *", "dashboard.tasks.reminder_sms"),
 ]

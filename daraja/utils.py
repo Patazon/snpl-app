@@ -22,7 +22,7 @@ load_dotenv(override=True)
 def basic_auth():
     """genereates the base64 encoded string for auth header"""
 
-    auth = f"{os.getenv('CONSUMER_KEY')}:{os.getenv('CONSUMER_SECRET')}"
+    auth = f"{os.getenv('PROD_CONSUMER_KEY')}:{os.getenv('PROD_CONSUMER_SECRET')}"
 
     byte_auth = auth.encode("utf-8")
 
@@ -33,23 +33,9 @@ def basic_auth():
     return decoded_string
 
 
-def basic_password():
-    timestamp = strftime("%Y%m%d%H%M%S")
-
-    password = f"{os.getenv('EXPRESS_SHORT_CODE')}{os.getenv('PASSKEY')}{timestamp}"
-
-    byte_password = password.encode("utf-8")
-
-    encoded_password = base64.b64encode(byte_password)
-
-    decoded_pass = encoded_password.decode("utf-8")
-
-    return decoded_pass
-
-
 def get_daraja_token():
     """consumes daraja's authorization api"""
-    url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+    url = "https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
 
     headers = {"Authorization": f"Basic {basic_auth()}"}
     # headers = {"Authorization": f"Basic {os.getenv("BASIC")}"}
@@ -138,35 +124,3 @@ def set_payment(msisdn, trans_id, trans_time, amount, ref_number):
     )
 
     # payment_sms(ref)
-
-
-def log_callback(resp):
-    # contract = log_contract(contract)
-    if resp:
-        log = CallbackResults.objects.create(body=resp)
-
-        body = log.body
-
-        if body["Body"]["stkCallback"]["ResultCode"] == 0:
-            filt_body = Payment.objects.create(
-                till_amount=body["Body"]["stkCallback"]["CallbackMetadata"]["Item"][0][
-                    "Value"
-                ],
-                till_trans_id=body["Body"]["stkCallback"]["CallbackMetadata"]["Item"][
-                    1
-                ]["Value"],
-                till_trans_time=body["Body"]["stkCallback"]["CallbackMetadata"]["Item"][
-                    3
-                ]["Value"],
-                mode_id="m-pesa",
-            )
-
-            return filt_body
-        return None
-
-
-def get_callback():
-    logs = CallbackResults.objects.all()
-    serializer = CallbackResultsSerializer(logs, many=True)
-
-    return serializer

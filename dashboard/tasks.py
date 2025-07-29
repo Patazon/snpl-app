@@ -17,8 +17,8 @@ def reminder_sms():
         Client.objects.filter(id_number__in=pending).values_list("msisdn", flat=True)
     )
 
-    print(pending)
-    print(msisdns)
+    # print(pending)
+    # print(msisdns)
 
     url = "https://api.tililtech.com/sms/v3/sendsms"
 
@@ -31,7 +31,7 @@ def reminder_sms():
             "mobile": msisdn,
             "response_type": "json",
             "shortcode": "Patazone",
-            "message": f"Dear Customer, kindly remember to complete your PatazonePay payments. Have a good day. Call 0111051120 for more products or visit https://patazone.co.ke",
+            "message": f"Dear Customer, kindly remember to complete your PatazonePay payments. Have a good day. Call 0111051120 for more products or visit https://www.patazone.co.ke",
         }
 
         feedback = requests.post(url, headers=headers, json=payload, timeout=20).json()
@@ -84,7 +84,7 @@ def payment_sms(contract):
         "client", "price"
     )[0]
 
-    print(contract_details)
+    # print(contract_details)
 
     client_details = Client.objects.get(id_number=contract_details[0])
 

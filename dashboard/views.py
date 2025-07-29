@@ -473,7 +473,7 @@ def create_contract(request):
         )
 
         # send text when new contract is opened
-        # new_contract_sms(client)
+        new_contract_sms(client)
 
         return redirect("contract")
 
@@ -581,7 +581,7 @@ def record_bank(request):
             contract_id=contract,
         )
 
-        # payment_sms(contract)
+        payment_sms(contract)
 
     return redirect("payment")
 
@@ -604,7 +604,7 @@ def record_cash(request):
         pwc.mode_id = "cash"
         pwc.save()
 
-        # payment_sms(contract)
+        payment_sms(contract)
 
         return redirect("payment")
 
@@ -624,7 +624,7 @@ def record_mpesa(request):
             contract_id=contract,
         )
 
-        # payment_sms(contract)
+        payment_sms(contract)
 
         return redirect("payment")
 

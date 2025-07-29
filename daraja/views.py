@@ -42,7 +42,7 @@ class Webhook(View):
 
         create_transdetails(resp)
 
-        print(resp)
+        # print(resp)
 
         msisdn = str({None: ""}.get(resp["MSISDN"], resp["MSISDN"]))
         trans_id = str({None: ""}.get(resp["TransID"], resp["TransID"]))
@@ -61,7 +61,7 @@ def register_urls(request):
     """registers urls for validation and confirmation"""
     tk = get_dbtoken()
 
-    url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v2/registerurl"
+    url = "https://api.safaricom.co.ke/mpesa/c2b/v2/registerurl"
 
     headers = {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ def register_urls(request):
     print(headers)
 
     payload = {
-        "ShortCode": os.getenv("C2B_SHORT_CODE"),
+        "ShortCode": os.getenv("PROD_SHORT_CODE"),
         "ResponseType": "Completed",
         "ConfirmationURL": os.getenv("CONFIRMATION_URL"),
         "ValidationURL": os.getenv("VALIDATION_URL"),
@@ -83,86 +83,3 @@ def register_urls(request):
     ).json()  # noqa
 
     return JsonResponse(feedback)
-
-
-def STKexpress(request):
-
-    tk = get_dbtoken()
-
-    if request.method == "GET":
-        # print(tk)
-        msisdn = request.GET["mobile"]
-
-        contract = request.GET["contract_id"]
-
-        formatted_msisdn = f"254{msisdn}"
-
-        amount = request.GET["amount"]
-
-        # print(contract)
-
-        url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {tk}",
-        }
-
-        # print(headers)
-        payload = {
-            "BusinessShortCode": int(os.getenv("EXPRESS_SHORT_CODE")),
-            "Password": f"{basic_password()}",
-            "Timestamp": f"{strftime('%Y%m%d%H%M%S')}",
-            "TransactionType": os.getenv("TRANS_TYPE"),
-            "Amount": f"{amount}",
-            "PartyA": 254708374149,
-            "PartyB": int(os.getenv("EXPRESS_SHORT_CODE")),
-            "PhoneNumber": int(formatted_msisdn),
-            "CallBackURL": f"{os.getenv('CALLBACK_URL')}",
-            "AccountReference": f"PZP-000{contract}",
-            "TransactionDesc": "PatazonePay",
-        }
-
-        # print(payload)
-        # print(basic_password())
-        # print(type(basic_password()))
-
-        feedback = requests.post(
-            url, headers=headers, json=payload, timeout=30
-        ).json()  # noqa
-
-        print(feedback)
-
-        if feedback["ResponseCode"] != "0":
-            return render(request, "dashboard/not-working.html")
-        return render(request, "dashboard/modals/spinner-modal.html")
-
-
-class STKCallback(APIView):
-
-    def post(self, request):
-
-        resp = request.data
-
-        res = log_callback(resp)
-
-        err_400 = status.HTTP_400_BAD_REQUEST
-
-        if res:
-            return response.Response(
-                {"message": "Callback data received and processed successfully"}  # noqa
-            )
-        return response.Response(
-            {"meesage": "No Callback data received"}, status=err_400
-        )
-
-    def get(self, request):
-        serializer = get_callback()
-
-        # return response.Response({"responses": serializer.data})
-        return render(request, "daraja/daraja.html", {"res": serializer.data})
-
-
-# def STKModal(request):
-
-#     return render(request, "daraja/lipanampesa-modal.html")
