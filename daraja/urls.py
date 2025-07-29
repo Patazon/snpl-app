@@ -1,7 +1,7 @@
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
 
-from daraja.views import STKCallback, STKexpress, Webhook, register_urls
+from daraja.views import Webhook, register_urls
 
 urlpatterns = [
     path("confirmation/", csrf_exempt(Webhook.as_view())),
