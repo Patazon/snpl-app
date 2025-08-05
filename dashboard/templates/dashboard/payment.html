@@ -43,7 +43,7 @@
                 {% for payment in content_list %}
                 <tr>
                     <!-- <td data-title="No.#" class="counterCell"></td> -->
-                    <td data-title="Contract">PZP-000{{ payment.contract.id }}</td>
+                    <td data-title="Contract">PZP{{ payment.contract.id }}</td>
                     <td data-title="Client">{{ payment.contract }}</td>
                     <td data-title="Paid via">{{ payment.mode}}</td>
                     {% if payment.till_amount %}

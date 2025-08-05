@@ -107,7 +107,7 @@ def set_payment(msisdn, trans_id, trans_time, amount, ref_number):
     time_format = strptime(trans_time, "%Y%m%d%H%M%S")
     formatted = strftime("%d-%m-%Y %H:%M:%S", time_format)
 
-    ref = ref_number.removeprefix("PZP-000")
+    ref = ref_number.removeprefix("PZP")
 
     q = Payment.objects.filter(contract_id=ref)
 

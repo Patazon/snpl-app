@@ -34,7 +34,7 @@
             <tbody>
                 {% for contract in content_list %}
                 <tr>
-                    <td data-title="Account No. ">PZP-000{{ contract.id }}</td>
+                    <td data-title="Account No. ">PZP{{ contract.id }}</td>
                     <td data-title="Client ">{{ contract.client.name}}</td>
                     <td data-title="Product ">{{ contract.product }}</td>
                     <td data-title="Price(KES) ">{{ contract.price|intcomma }}</td>
