@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 
+from django.db.backends.postgresql.psycopg_any import IsolationLevel
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
@@ -93,6 +94,9 @@ DATABASES = {
         "PASSWORD": "admin",
         "HOST": "localhost",
         "PORT": "",
+        "OPTIONS": {
+            "isolation_level": IsolationLevel.SERIALIZABLE,
+        },
     }
 }
 
