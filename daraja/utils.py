@@ -2,6 +2,7 @@
 
 import base64
 import os
+import re
 from time import strftime, strptime
 
 import requests
@@ -103,11 +104,16 @@ def get_transdetails():
     return print("No transactions")
 
 
+def remove_prefix_case_insenstive(acc):
+
+    return re.sub(r"^PZP", "", acc, count=1, flags=re.IGNORECASE)
+
+
 def set_payment(msisdn, trans_id, trans_time, amount, ref_number):
     time_format = strptime(trans_time, "%Y%m%d%H%M%S")
     formatted = strftime("%d-%m-%Y %H:%M:%S", time_format)
 
-    ref = ref_number.removeprefix("PZP")
+    ref = remove_prefix_case_insenstive(ref_number)
 
     q = Payment.objects.filter(contract_id=ref)
 
