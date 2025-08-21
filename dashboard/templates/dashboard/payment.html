@@ -62,9 +62,10 @@
                     {% endif %}
                     {% if perms.dashboard.delete_payment %}
                     <td data-title="Actions">
-                        <a href="{% url 'delete_payment' payment.id %}" class="updclient-btn"><i
-                                class="material-icons tbl-icn">delete</i></a>{% endif %}
+                        <a href="{% url 'delete_payment' payment.id %}" onclick="return confirm('Confirm delete?');"
+                            class="updclient-btn"><i class="material-icons tbl-icn">delete</i></a>
                     </td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>

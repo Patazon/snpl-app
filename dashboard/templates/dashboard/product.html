@@ -34,7 +34,8 @@
                     <td data-title="Added">{{ product.created_at|date:'M d, Y h:i A'}}</td>
                     <td data-title="Actions " class="tbl-icons"><a href="{% url 'update_product' product.id %}"><i
                                 class="material-icons tbl-icn">edit</i></a>
-                        {% if perms.dashboard.delete_product %}<a href="{% url 'delete_product' product.id %}"><i
+                        {% if perms.dashboard.delete_product %}<a href="{% url 'delete_product' product.id %}"
+                            onclick="return confirm('Confirm delete?');"><i
                                 class="material-icons tbl-icn">delete</i></a>{% endif %}
                     </td>
                 </tr>

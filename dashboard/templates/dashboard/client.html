@@ -39,8 +39,8 @@
                     <td data-title="Actions " class="tbl-icons"><a href="{% url 'update_client' client.id %}"
                             class="updclient-btn"><i class="material-icons tbl-icn">edit</i></a>
                         {% if perms.auth.delete_user%}
-                        <a href="{% url 'delete_client' client.id %}" class="updclient-btn"><i
-                                class="material-icons tbl-icn">delete</i></a> {% endif %}
+                        <a href="{% url 'delete_client' client.id %}" onclick="return confirm('Confirm delete?');"
+                            class="updclient-btn"><i class="material-icons tbl-icn">delete</i></a> {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
